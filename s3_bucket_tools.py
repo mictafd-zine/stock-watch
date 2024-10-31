@@ -1,31 +1,21 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
-
-
-# In[2]:
-
-
-aws_keys={
-  "access_key": "AKIAVCN5PUMBGO64PA6X",
-  "secret_key": "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",
-  "region":"eu-west-1"}
-
-
-# In[6]:
-
 
 from io import StringIO
 import boto3 # boto3 package is the package that is used to connect to S3 bucket in python. 
 import os
 
+from dotenv import load_dotenv
+import os
 
-# In[7]:
+# Load environment variables from .env file
+load_dotenv()
+
+
+aws_keys={
+  "access_key": os.environ.get("ACCESS_KEY"),
+  "secret_key": os.environ.get("SECRET_KEY"),
+  "region":"eu-west-1"}
 
 
 class S3_class():
