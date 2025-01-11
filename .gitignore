@@ -6,7 +6,7 @@ __pycache__/
 # Virtual environment
 # Poetry typically stores virtual environments in the system, but if you configure Poetry
 # to create it within the project, you can exclude it like this:
-.venv/
+.env/
 
 # Distribution / packaging
 build/
@@ -29,7 +29,6 @@ htmlcov/
 
 # macOS specific
 .DS_Store
-.env
 
 # IDE specific
 .vscode/

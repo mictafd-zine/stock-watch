@@ -1,15 +1,24 @@
 [tool.poetry]
-name = "expenses-tracker"
+name = "stock-price-alerts"
 version = "0.1.0"
 description = ""
 authors = ["Michael Dzine <michaeldzine@gmail.com>"]
 readme = "README.md"
+packages = [
+    { include = "src" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-streamlit = "^1.27.2"
-boto3 = "^1.28.66"
+pandas = "^2.2.3"
+requests = "^2.32.3"
+boto3 = "^1.35.63"
+beautifulsoup4 = "^4.12.3"
+selenium = "^4.27.1"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
 
 [build-system]
 requires = ["poetry-core"]
