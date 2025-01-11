@@ -36,5 +36,13 @@ htmlcov/
 *.swp
 .env
 
+# Ignore .terraform directories in any subfolder
+**/.terraform/
+
+# Ignore .tfstate files in any subfolder
+**/*.tfstate
+
+# Ignore .tfvars files in any subfolder
+**/*.tfvars
 
 
