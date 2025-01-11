@@ -1,9 +1,9 @@
-# stock-price-alerts
+# STOCK PRICE MONITOR
 #### Problem Statement
 - User has limited time to look at stock prices to buy/sell. 
-- User is interested in monitoring as many stock prices as possible
-- On a daily basis user would like to know which stocks dropped to most to buy and which one increased the most to sell
-- User wants to do this completely free of charge or minimal costs
+- User is interested in monitoring as many stock prices as possible.
+- On a daily basis user would like to know which stocks dropped the most to buy and which one increased the most to sell.
+- User wants to do this completely free of charge or minimal costs.
 
 ### Project Overview
 The project will be divided into 3 parts:
@@ -19,29 +19,29 @@ The project will be divided into 3 parts:
 - If the csv does not exist, we query the API to get data and save on the specified path
 - *Limitation*: Free tier on the API is limited to 25 requests per day
 - Backfilling from start of 2024.
-- We will use a different API key to backfill data starting with Magnificant 7.
 - Data will be Partitioned by organisation, year, month. Each month will have daily files for ech company.
 
 ### Analytics
 - User will get a summary of biggest movers on the market daily, month-on-month, year-on-year
 - read daily file for the 500 companies.
 - For each company, compare closing price with opening price.
-- This way you get companies with largest drops, increases.
+- This way you get companies with largest movements.
 - query the data for the the last 30 days. specific metrics to follow
 - query the data for the year to date. specific metrics to follow
+- More Analytics to be added, once initial prototype is done.
 
 ### Alerting 
 - The best way to send these notifications will be decided.
-- Proposed methodology: email with a table and relevant metrics limited the top x biggest movers. 
-- Big movers for the day
-- Big movers for the month 
-- Big movers for the year
+- Proposed methodology: email with a table and relevant metrics limited to the top x biggest movers. 
+- Big movers year-on-year
+- Big movers month-on-month 
+- Big movers day-on-day
 
 
 ### Security and Authentication
 
 ### Next Steps
-- Merge branch into main.
+- Make sure code run after migration.
 - Develop API calls using free tier For top 25 companies. [Free API tier limitation]
 - Develop lambda function that reads alerts biggest movers on the market (absolute value change and percentage)
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 
