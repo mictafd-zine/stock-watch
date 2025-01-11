@@ -1,5 +1,37 @@
-*.csv
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+# Poetry typically stores virtual environments in the system, but if you configure Poetry
+# to create it within the project, you can exclude it like this:
 .venv/
-__pycache__
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Poetry-specific
+poetry.lock
+
+# Test result files
+.coverage
+coverage.xml
+htmlcov/
+
+# Pytest cache
+.pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# macOS specific
+.DS_Store
 .env
-test.txt
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
