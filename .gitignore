@@ -36,3 +36,21 @@ htmlcov/
 *.swp
 .env
 
+# Ignore .terraform folder inside infra-folder
+infra-folder/.terraform/
+
+# Ignore Terraform state files in infra-folder
+infra-folder/*.tfstate
+infra-folder/*.tfstate.backup
+
+# Ignore crash logs in infra-folder
+infra-folder/crash.log
+
+# Ignore override files in infra-folder
+infra-folder/*.tfvars
+infra-folder/*.tfvars.json
+
+# Ignore generated plan files in infra-folder
+infra-folder/*.tfplan
+
+
