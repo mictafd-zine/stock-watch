@@ -29,6 +29,7 @@ The project will be divided into 3 parts:
 - query the data for the the last 30 days. specific metrics to follow
 - query the data for the year to date. specific metrics to follow
 - More Analytics to be added, once initial prototype is done.
+- Measure stock volatility in the future
 
 ### Alerting 
 - The best way to send these notifications will be decided.

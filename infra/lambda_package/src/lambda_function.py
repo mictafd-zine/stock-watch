@@ -12,6 +12,7 @@ from io import StringIO
 
 
 STORAGE_BUCKET_NAME = "alpha-vantage-data-storage"
+MVP_TICKERS = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA', 'BA', 'PLTR', 'TGT', 'NFLX']
 
 
 def _upload_data_to_s3(df: pd.DataFrame, bucket_name: str, key: str) -> None:
@@ -83,7 +84,7 @@ def _load_fortune_500_tickers() -> list:
     response = aws_s3_client.get_object(Bucket='alpha-vantage-data-storage', Key='stock-markets-dictionaries/fortune_500.csv')
     (pd.read_csv(io.StringIO(response['Body'].read().decode('utf-8') )))['Ticker'].tolist()
     
-    return ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA', 'BA', 'PLTR', 'TGT', 'NFLX']
+    return MVP_TICKERS
 
 def _get_ticker_to_process(tickers: list, aws_s3_client: boto3.client) -> str:
 
