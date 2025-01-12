@@ -25,7 +25,7 @@ variable "docker_image_name" {
 
 variable "docker_image_tag" {
   description = "Tag for the Docker image"
-  default     = "latest"
+  default     = "v1.0.0"
 }
 
 variable "ecr_repository_name" {

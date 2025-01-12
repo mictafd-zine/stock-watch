@@ -45,4 +45,7 @@ htmlcov/
 # Ignore .tfvars files in any subfolder
 **/*.tfvars
 
+**/terraform.tfstate.backup
+
+
 
