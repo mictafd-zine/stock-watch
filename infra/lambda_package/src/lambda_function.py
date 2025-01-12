@@ -81,8 +81,9 @@ def _load_fortune_500_tickers() -> list:
 
     aws_s3_client = boto3.client("s3", region_name='eu-west-1')
     response = aws_s3_client.get_object(Bucket='alpha-vantage-data-storage', Key='stock-markets-dictionaries/fortune_500.csv')
+    (pd.read_csv(io.StringIO(response['Body'].read().decode('utf-8') )))['Ticker'].tolist()
     
-    return (pd.read_csv(io.StringIO(response['Body'].read().decode('utf-8') )))['Ticker'].tolist()
+    return ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA', 'BA', 'PLTR', 'TGT', 'NFLX']
 
 def _get_ticker_to_process(tickers: list, aws_s3_client: boto3.client) -> str:
 
