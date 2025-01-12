@@ -13,7 +13,7 @@ resource "null_resource" "docker_build_and_push" {
   triggers = {
     ecr_repository_url = aws_ecr_repository.lambda_repository.repository_url
     image_tag          = var.docker_image_tag
-    source_code_hash   = filebase64sha256("${path.module}/lambda_package/lambda_function.py")  # Hashes the Python code
+    source_code_hash   = filebase64sha256("${path.module}/lambda_package/src/lambda_function.py")  # Hashes the Python code
   }
 
   provisioner "local-exec" {
