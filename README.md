@@ -42,7 +42,9 @@ The project will be divided into 3 parts:
 ### Security and Authentication
 
 ### Next Steps
-- Make sure code run after migration.
+- Setup a CD pipeline to deploy the python code lambda function everytime python code changes.
+- Update pipeline to deploy the lambda function everytime the python code changes.
+- Remove root user access on AWS account!!! after testing.
 - Develop API calls using free tier For top 25 companies. [Free API tier limitation]
 - Develop lambda function that reads alerts biggest movers on the market (absolute value change and percentage)
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 
