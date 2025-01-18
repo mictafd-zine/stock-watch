@@ -44,10 +44,7 @@ The project will be divided into 3 parts:
 
 ### Next Steps
 - Update pipeline to force deploy the lambda function each time time a new image is pushed to ECR.
-- add a CD pipeline that rdeploys the infrastructure everytime the infra code changes.
-- Remove root user access on AWS account!!! after testing.
-- Develop API calls using free tier For top 25 companies. [Free API tier limitation]
-- Develop lambda function that reads alerts biggest movers on the market (absolute value change and percentage)
+- Add analytics lambda function to read the data from S3 and generate the analytics.
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 
 - Can we build a dashboard?
 - Setup role for Michael for authentication to deploy resources.
@@ -61,7 +58,8 @@ The project will be divided into 3 parts:
 ### Deployment
 
 - Current state; The docker image is pushed to ECR if the code in the `infra/lambda_package` folder changes.
-- We need to force teh deployment of the lambda function everytime the docker image is pushed to ECR.
+- Then the lambda function is updated with the new image from ECR, by ulling hte new image using teh CD pipeline.
+- Rest of the infrastructure is updated using the steps below. 
 
 ```bash
 

@@ -72,3 +72,18 @@ jobs:
         # Push the Docker image to Amazon ECR
         docker push $ECR_URI:$IMAGE_TAG
 
+    - name: Update Lambda function with the latest image
+      env:
+        AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+        AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        ECR_URI: "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/stock-watch-repo"
+      run: |
+        FUNCTION_NAME="AlphaVantageLambdaDataIngestion"  # Replace with your Lambda function name
+        IMAGE_TAG="latest"
+        
+        # Update the Lambda function with the new image from ECR
+        aws lambda update-function-code \
+          --function-name $FUNCTION_NAME \
+          --image-uri $ECR_URI:$IMAGE_TAG \
+          --region $AWS_REGION
+
