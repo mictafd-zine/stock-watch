@@ -8,6 +8,7 @@ on:
       - "main"
     paths:
       - "infra/**"  # Trigger only when changes occur in the 'infra' folder
+      - ".github/workflows/**"
 
 jobs:
   push-to-ecr:
@@ -23,7 +24,7 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       run: |
         aws ecr get-login-password --region $AWS_REGION | \
         docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com
