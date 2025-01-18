@@ -7,7 +7,7 @@ on:
     branches:
       - "main"
     paths:
-      - "infra/**"  # Trigger only when changes occur in the 'infra' folder
+      - "infra/lambda_package/**"  # Trigger only when changes occur in the 'infra' folder
       - ".github/workflows/**"
 
 jobs:
