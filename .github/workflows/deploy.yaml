@@ -5,7 +5,7 @@ name: Push Docker Image to ECR
 on:
   push:
     branches:
-      - "fix-lambda-redeploy"
+      - "main"
     paths:
       - "infra/lambda_package/**"  # Trigger only when changes occur in the 'infra' folder
       - ".github/workflows/**"
