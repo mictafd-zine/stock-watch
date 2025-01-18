@@ -59,7 +59,7 @@ The project will be divided into 3 parts:
 - Automate detecting environment detection for development and production.
 
 ### Deployment
-Starting from project root directory:
+
 ```bash
 
 cd infra
