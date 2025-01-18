@@ -42,7 +42,7 @@ jobs:
     - name: Push to Amazon ECR
       env:
         AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       run: |
         IMAGE_NAME="stock-data-ingestion"
         IMAGE_TAG="latest"
