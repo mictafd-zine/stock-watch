@@ -5,7 +5,7 @@ name: Push Docker Image to ECR
 on:
   push:
     branches:
-      - "debug-cd-pipeline"
+      - "main"
     paths:
       - "infra/**"  # Trigger only when changes occur in the 'infra' folder
       - ".github/workflows/**"

@@ -41,9 +41,10 @@ The project will be divided into 3 parts:
 
 ### Security and Authentication
 
+
 ### Next Steps
-- Setup a CD pipeline to deploy the python code lambda function everytime python code changes.
-- Update pipeline to deploy the lambda function everytime the python code changes.
+- Update pipeline to force deploy the lambda function each time time a new image is pushed to ECR.
+- add a CD pipeline that rdeploys the infrastructure everytime the infra code changes.
 - Remove root user access on AWS account!!! after testing.
 - Develop API calls using free tier For top 25 companies. [Free API tier limitation]
 - Develop lambda function that reads alerts biggest movers on the market (absolute value change and percentage)
@@ -57,7 +58,7 @@ The project will be divided into 3 parts:
 - Make a lambda function that updates Fortune500 regualarly and updates the data in the s3 bucket
 - Automate detecting environment detection for development and production.
 
-### Python Code deployment 
+### Deployment
 Starting from project root directory:
 ```bash
 
