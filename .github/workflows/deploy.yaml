@@ -36,7 +36,7 @@ jobs:
       run: |
         IMAGE_NAME="stock-data-ingestion" # Corrected repository name
         IMAGE_TAG="latest"
-        docker build -t $IMAGE_NAME:$IMAGE_TAG ./infra
+        docker build -t $IMAGE_NAME:$IMAGE_TAG ./infra/lambda_package
 
     # Push the Docker image to AWS ECR
     - name: Push to Amazon ECR
