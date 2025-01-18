@@ -41,10 +41,19 @@ jobs:
     # Push the Docker image to AWS ECR
     - name: Push to Amazon ECR
       env:
+        AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
         IMAGE_NAME="stock-data-ingestion"
         IMAGE_TAG="latest"
-        ECR_URI="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME"
+        ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME"
+        
+        # Debugging step: echo the ECR_URI to ensure correct substitution
+        echo "ECR URI: $ECR_URI"
+        
+        # Tag the Docker image with the full ECR URI
         docker tag $IMAGE_NAME:$IMAGE_TAG $ECR_URI:$IMAGE_TAG
+        
+        # Push the Docker image to Amazon ECR
         docker push $ECR_URI:$IMAGE_TAG
+
