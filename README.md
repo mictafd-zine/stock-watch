@@ -60,6 +60,9 @@ The project will be divided into 3 parts:
 
 ### Deployment
 
+- Current state; The docker image is pushed to ECR if the code in the `infra/lambda_package` folder changes.
+- We need to force teh deployment of the lambda function everytime the docker image is pushed to ECR.
+
 ```bash
 
 cd infra
