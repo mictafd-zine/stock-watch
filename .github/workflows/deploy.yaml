@@ -23,24 +23,27 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
-        $(aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com")
+        aws ecr get-login-password --region $AWS_REGION | \
+        docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com
 
     # Build and tag the Docker image
     - name: Build and tag Docker image
+      env:
+        AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
-        IMAGE_NAME="infra" # The ECR repository for the infra target
+        IMAGE_NAME="stock-data-ingestion" # Corrected repository name
         IMAGE_TAG="latest"
         docker build -t $IMAGE_NAME:$IMAGE_TAG ./infra
 
     # Push the Docker image to AWS ECR
     - name: Push to Amazon ECR
+      env:
+        AWS_REGION: ${{ secrets.AWS_REGION }}
       run: |
-        IMAGE_NAME="infra" # The ECR repository for the infra target
+        IMAGE_NAME="stock-data-ingestion"
         IMAGE_TAG="latest"
-        ACCOUNT_ID=${{ secrets.AWS_ACCOUNT_ID }}
-        REGION=${{ vars.AWS_DEFAULT_REGION }}
-        ECR_URI="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_NAME"
+        ECR_URI="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME"
         docker tag $IMAGE_NAME:$IMAGE_TAG $ECR_URI:$IMAGE_TAG
         docker push $ECR_URI:$IMAGE_TAG
