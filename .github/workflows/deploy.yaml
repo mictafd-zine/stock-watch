@@ -76,10 +76,13 @@ jobs:
       env:
         AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
         AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        ECR_URI: "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/stock-watch-repo"
+        
+        
       run: |
-        FUNCTION_NAME="AlphaVantageLambdaDataIngestion"  # Replace with your Lambda function name
+        FUNCTION_NAME="AlphaVantageLambdaDataIngestion"  
         IMAGE_TAG="latest"
+        ECR_REPO_NAME="stock-watch-repo"
+        ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO_NAME"
         
         # Update the Lambda function with the new image from ECR
         aws lambda update-function-code \
