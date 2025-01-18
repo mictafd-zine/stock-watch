@@ -60,7 +60,7 @@ jobs:
       run: |
         IMAGE_NAME="stock-data-ingestion"
         IMAGE_TAG="latest"
-        ECR_REPO_NAME = "stock-watch-repo"
+        ECR_REPO_NAME="stock-watch-repo"
         ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO_NAME"
         
         # Debugging step: echo the ECR_URI to ensure correct substitution
