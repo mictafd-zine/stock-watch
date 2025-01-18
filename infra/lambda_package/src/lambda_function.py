@@ -18,7 +18,7 @@ MVP_TICKERS = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA', 'BA', 'P
 def _upload_data_to_s3(df: pd.DataFrame, bucket_name: str, key: str) -> None:
    
     csv_buffer = StringIO()
-    df.to_csv(csv_buffer, index=False)
+    df.to_csv(csv_buffer, index=True)
 
     
     try:
