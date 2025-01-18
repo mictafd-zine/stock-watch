@@ -19,6 +19,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Set up AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+    - name: Create ECR Repository if it doesn't exist
+      run: |
+        aws ecr describe-repositories --repository-names stock-watch-repo --region $AWS_REGION || \
+        aws ecr create-repository --repository-name stock-watch-repo --region $AWS_REGION
+      
+
     # Log in to Amazon ECR using environment variables for credentials
     - name: Log in to Amazon ECR
       env:
@@ -36,15 +49,26 @@ jobs:
       run: |
         IMAGE_NAME="stock-data-ingestion" # Corrected repository name
         IMAGE_TAG="latest"
-        docker build -t $IMAGE_NAME:$IMAGE_TAG ./infra
+        docker build -t $IMAGE_NAME:$IMAGE_TAG ./infra/lambda_package
+
 
     # Push the Docker image to AWS ECR
     - name: Push to Amazon ECR
       env:
-        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+        AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       run: |
         IMAGE_NAME="stock-data-ingestion"
         IMAGE_TAG="latest"
-        ECR_URI="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME"
+        ECR_REPO_NAME="stock-watch-repo"
+        ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO_NAME"
+        
+        # Debugging step: echo the ECR_URI to ensure correct substitution
+        echo "ECR URI: $ECR_URI"
+        
+        # Tag the Docker image with the full ECR URI
         docker tag $IMAGE_NAME:$IMAGE_TAG $ECR_URI:$IMAGE_TAG
+        
+        # Push the Docker image to Amazon ECR
         docker push $ECR_URI:$IMAGE_TAG
+
