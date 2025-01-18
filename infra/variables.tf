@@ -20,7 +20,7 @@ variable "alpha_vantage_secret_name" {
 
 variable "docker_image_name" {
   description = "Name of the Docker image for the Lambda function"
-  default     = "lambda-docker-package"
+  default     = "stock-data-ingestion"
 }
 
 variable "docker_image_tag" {
@@ -30,6 +30,6 @@ variable "docker_image_tag" {
 
 variable "ecr_repository_name" {
   description = "Name of the ECR repository for storing the Docker image"
-  default     = "lambda-docker-package-repo"
+  default     = "stock-watch-repo"
 }
 

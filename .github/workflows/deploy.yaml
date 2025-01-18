@@ -1,0 +1,49 @@
+# Push Docker image for 'infra' to AWS ECR
+
+name: Push Docker Image to ECR
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "infra/**"  # Trigger only when changes occur in the 'infra' folder
+
+jobs:
+  push-to-ecr:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Log in to Amazon ECR using environment variables for credentials
+    - name: Log in to Amazon ECR
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+      run: |
+        aws ecr get-login-password --region $AWS_REGION | \
+        docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com
+
+    # Build and tag the Docker image
+    - name: Build and tag Docker image
+      env:
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+      run: |
+        IMAGE_NAME="stock-data-ingestion" # Corrected repository name
+        IMAGE_TAG="latest"
+        docker build -t $IMAGE_NAME:$IMAGE_TAG ./infra
+
+    # Push the Docker image to AWS ECR
+    - name: Push to Amazon ECR
+      env:
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+      run: |
+        IMAGE_NAME="stock-data-ingestion"
+        IMAGE_TAG="latest"
+        ECR_URI="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_NAME"
+        docker tag $IMAGE_NAME:$IMAGE_TAG $ECR_URI:$IMAGE_TAG
+        docker push $ECR_URI:$IMAGE_TAG
