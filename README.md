@@ -43,7 +43,6 @@ The project will be divided into 3 parts:
 
 
 ### Next Steps
-- Update pipeline to force deploy the lambda function each time time a new image is pushed to ECR.
 - Add analytics lambda function to read the data from S3 and generate the analytics.
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 
 - Can we build a dashboard?
