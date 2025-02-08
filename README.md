@@ -53,6 +53,7 @@ The project will be divided into 3 parts:
 - Setup a ci pipeline to run the python code formatting and linting
 - Make a lambda function that updates Fortune500 regualarly and updates the data in the s3 bucket
 - Automate detecting environment detection for development and production.
+- Improve data querying capabilities using relevant tools
 
 ### Deployment
 
