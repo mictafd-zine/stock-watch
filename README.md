@@ -43,7 +43,8 @@ The project will be divided into 3 parts:
 
 
 ### Next Steps
-- Add analytics lambda function to read the data from S3 and generate the analytics.
+- add movers assessment function to determine stocks with big change over a period of time.
+- generate tables for the big movers for each period of time.
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 
 - Can we build a dashboard?
 - Setup role for Michael for authentication to deploy resources.

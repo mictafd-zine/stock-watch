@@ -36,20 +36,23 @@ def _data_loader(tickers: list) -> pd.DataFrame:
     now_ = dt.datetime.now()
     today_ = now_.strftime('%Y-%m-%d')
 
-    start_date = (now_ - pd.Timedelta(days=30)).strftime('%Y-%m-%d')
+    start_date = (now_ - pd.Timedelta(days=25)).strftime('%Y-%m-%d')
     ticker_col = 'ticker'
+    time_col = 'utc_time'
 
     df = pd.DataFrame()
     for date_ in pd.date_range(start_date, today_, freq='D'):
         for ticker in tickers:
             ticker_day_data = _read_file_from_s3(_generate_s3_key(date_, ticker))
+            
             if ticker_day_data is not None:
-                df[ticker_col] = ticker
+                ticker_day_data.columns = ['utc_time'] + list(ticker_day_data.columns[1:])
+                ticker_day_data[ticker_col] = ticker
                 df = pd.concat([df, ticker_day_data])
             else:
                 pass
 
-    return df.sort_values(by=ticker_col)
+    return df.sort_values(by=time_col)
 
 if __name__ == "__main__":
     tickers = ['GOOGL', 'NVDA']
