@@ -12,7 +12,7 @@ from io import StringIO
 
 
 STORAGE_BUCKET_NAME = "alpha-vantage-data-storage"
-MVP_TICKERS = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA', 'BA', 'PLTR', 'TGT', 'NFLX']
+MVP_TICKERS = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA', 'BA', 'PLTR', 'TGT', 'NFLX', 'TEM']
 
 
 def _upload_data_to_s3(df: pd.DataFrame, bucket_name: str, key: str) -> None:
