@@ -8,7 +8,7 @@ on:
       - "main"
     paths:
       - "infra/**" # trigger when infrastructure changes
-      - "lambda_source_code/**"  # trigger when lambda source code changes
+      - "lambdas_source_code/**"  # trigger when lambda source code changes
       - ".github/workflows/**" # trigger when this CI/CD workflow changes
 
 jobs:
@@ -50,7 +50,7 @@ jobs:
       run: |
         IMAGE_NAME="stock-data-ingestion" # Corrected repository name
         IMAGE_TAG="latest"
-        docker build -f ./lambda_source_code/data_ingestion -t $IMAGE_NAME:$IMAGE_TAG ./lambda_source_code
+        docker build -f ./lambdas_source_code/data_ingestion/Dockerfile -t $IMAGE_NAME:$IMAGE_TAG .
 
 
     # Push the Docker image to AWS ECR
