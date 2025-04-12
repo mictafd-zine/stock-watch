@@ -8,7 +8,7 @@ on:
       - "test-lambda-deployment"
     paths:
       - "infra/**" # trigger when infrastructure changes
-      - "lambda_source_code/**"  # trigger when lambda source code changes
+      - "lambdas_source_code/**"  # trigger when lambda source code changes
       - ".github/workflows/**" # trigger when this CI/CD workflow changes
 
 jobs:
