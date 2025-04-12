@@ -103,7 +103,7 @@ def _get_ticker_to_process(tickers: list, aws_s3_client: boto3.client) -> str:
     return symbol_
 
 
-def lambda_handler(event, context):
+def alpha_vantage_data_accessor(event, context):
     secret_name = os.environ["SECRET_NAME"]
     region_name = os.environ["REGION"]
 
