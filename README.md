@@ -43,8 +43,8 @@ The project will be divided into 3 parts:
 
 
 ### Next Steps
-- Update pipeline to force deploy the lambda function each time time a new image is pushed to ECR.
-- Add analytics lambda function to read the data from S3 and generate the analytics.
+- add movers assessment function to determine stocks with big change over a period of time.
+- generate tables for the big movers for each period of time.
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 
 - Can we build a dashboard?
 - Setup role for Michael for authentication to deploy resources.
@@ -54,6 +54,7 @@ The project will be divided into 3 parts:
 - Setup a ci pipeline to run the python code formatting and linting
 - Make a lambda function that updates Fortune500 regualarly and updates the data in the s3 bucket
 - Automate detecting environment detection for development and production.
+- Improve data querying capabilities using relevant tools
 
 ### Deployment
 
