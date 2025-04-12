@@ -50,7 +50,7 @@ jobs:
       run: |
         IMAGE_NAME="stock-data-ingestion" # Corrected repository name
         IMAGE_TAG="latest"
-        docker build -f ./lambdas_source_code/data_ingestion -t $IMAGE_NAME:$IMAGE_TAG .
+        docker build -f ./lambdas_source_code/data_ingestion/Dockerfile -t $IMAGE_NAME:$IMAGE_TAG .
 
 
     # Push the Docker image to AWS ECR
