@@ -1,51 +1,45 @@
+
 # Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual environment
-# Poetry typically stores virtual environments in the system, but if you configure Poetry
-# to create it within the project, you can exclude it like this:
-.venv/
-
+# CDK asset staging directory
 # Distribution / packaging
-build/
-dist/
-*.egg-info/
-
-# Poetry-specific
-poetry.lock
-
-# Test result files
-.coverage
-coverage.xml
-htmlcov/
-
-# Pytest cache
-.pytest_cache/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-# macOS specific
-.DS_Store
-
 # IDE specific
-.vscode/
-.idea/
-*.swp
-.env
-
 # Ignore .terraform directories in any subfolder
-**/.terraform/
-
 # Ignore .tfstate files in any subfolder
-**/*.tfstate
-
 # Ignore .tfvars files in any subfolder
+# Jupyter Notebook checkpoints
+# Poetry typically stores virtual environments in the system, but if you configure Poetry
+# Poetry-specific
+# Pytest cache
+# Test result files
+# Virtual environment
+# macOS specific
+# to create it within the project, you can exclude it like this:
+*$py.class
+**/*.tfstate
 **/*.tfvars
-
+**/.terraform/
 **/terraform.tfstate.backup
-
-
-
+*.egg-info
+*.egg-info/
+*.py[cod]
+*.swp
+.DS_Store
+.cdk.staging
+.coverage
+.env
+.idea/
+.ipynb_checkpoints/
+.pytest_cache
+.pytest_cache/
+.venv
+.venv/
+.vscode/
+__pycache__
+__pycache__/
+build/
+cdk.out
+coverage.xml
+dist/
+htmlcov/
+package-lock.json
+poetry.lock

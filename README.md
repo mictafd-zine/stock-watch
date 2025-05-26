@@ -43,7 +43,7 @@ The project will be divided into 3 parts:
 
 
 ### Next Steps
-- switch IaC tool from Terraform to CDK (cdk easier to and more familiar with Python)
+- switch IaC tool from Terraform to CDK (cdk easier to setup and developer more familiar with Python)
 - add movers assessment function to determine stocks with big change over a period of time.
 - generate tables for the big movers for each period of time.
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 

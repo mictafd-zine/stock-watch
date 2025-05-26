@@ -15,6 +15,8 @@ requests = "^2.32.3"
 boto3 = "^1.35.63"
 beautifulsoup4 = "^4.12.3"
 selenium = "^4.27.1"
+aws-cdk-lib = "^2.198.0"
+constructs = "^10.4.2"
 
 
 [tool.poetry.group.dev.dependencies]
