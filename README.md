@@ -43,6 +43,7 @@ The project will be divided into 3 parts:
 
 
 ### Next Steps
+- Fix data ingestion lambda
 - Solve issue with new company not added to data ingestion
 - Get back to the analytics piece
 - add movers assessment function to determine stocks with big change over a period of time.
