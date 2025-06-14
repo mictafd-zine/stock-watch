@@ -43,7 +43,9 @@ The project will be divided into 3 parts:
 
 
 ### Next Steps
-- switch IaC tool from Terraform to CDK (cdk easier to and more familiar with Python)
+- Fix data ingestion lambda
+- Solve issue with new company not added to data ingestion
+- Get back to the analytics piece
 - add movers assessment function to determine stocks with big change over a period of time.
 - generate tables for the big movers for each period of time.
 - Setup Email Alerts on the big movers (D-1)? Is this too late? 

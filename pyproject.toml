@@ -1,25 +1,7 @@
-[tool.poetry]
-name = "stock-price-alerts"
+[project]
+name = "stock-watch"
 version = "0.1.0"
-description = ""
-authors = ["Michael Dzine <michaeldzine@gmail.com>"]
+description = "Add your description here"
 readme = "README.md"
-packages = [
-    { include = "src" }
-]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-pandas = "^2.2.3"
-requests = "^2.32.3"
-boto3 = "^1.35.63"
-beautifulsoup4 = "^4.12.3"
-selenium = "^4.27.1"
-
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.3"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.13"
+dependencies = []
