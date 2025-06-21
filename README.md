@@ -62,14 +62,14 @@ The project will be divided into 3 parts:
 ### Deployment
 
 - Current state; The docker image is pushed to ECR if the code in the `infra/lambda_package` folder changes.
-- Then the lambda function is updated with the new image from ECR, by ulling hte new image using teh CD pipeline.
+- Then the lambda function is updated with the new image from ECR, by pulling the new image using the CD pipeline.
 - Rest of the infrastructure is updated using the steps below. 
 
 ```bash
 
 cd infra
-terraform plan
-terraform apply
+cdk synth
+cdk deploy
 
 ```
 

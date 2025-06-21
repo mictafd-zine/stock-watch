@@ -124,3 +124,6 @@ def alpha_vantage_data_accessor(event, context):
         df   = _send_query(url_)
         _upload_data_to_s3(df, STORAGE_BUCKET_NAME,_generate_s3_key(symbol_))
 
+if __name__ == "__main__":
+    alpha_vantage_data_accessor()
+

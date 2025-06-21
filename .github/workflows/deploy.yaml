@@ -5,7 +5,7 @@ name: Push Docker Image to ECR
 on:
   push:
     branches:
-      - "random_branch_turning_off_deployment"
+      - "fix-lambda-bug"
     paths:
       - "infra/**" # trigger when infrastructure changes
       - "lambdas_source_code/**"  # trigger when lambda source code changes
