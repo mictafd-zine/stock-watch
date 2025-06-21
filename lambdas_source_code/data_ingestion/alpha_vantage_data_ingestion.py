@@ -88,17 +88,13 @@ def _load_fortune_500_tickers() -> list:
 
 def _get_ticker_to_process(tickers: list, aws_s3_client: boto3.client) -> str:
 
-    index_ = 0
-    max_index = len(tickers) - 1
-    data_available = True
-    while data_available:
-        symbol_ = tickers[index_]
+    for symbol_ in tickers:
+        print(f"checking data availability for {symbol_}")
         s3_path = _generate_s3_key(symbol_)
         data_available = _check_day_data_availability(s3_path, aws_s3_client)
-        index_ += 1
-        if index_ > max_index:
-            symbol_ = ''
+        if not data_available:
             break
+
 
     return symbol_
 

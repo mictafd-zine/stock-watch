@@ -17,9 +17,11 @@ The project will be divided into 3 parts:
 - We get stock price for specified organisation for D-1. 
 - We iterate through the Fortune500 csv trying to read a csv for each company.
 - If the csv does not exist, we query the API to get data and save on the specified path
-- *Limitation*: Free tier on the API is limited to 25 requests per day
 - Backfilling from start of 2024.
 - Data will be Partitioned by organisation, year, month. Each month will have daily files for ech company.
+#### Limitations
+- Free tier on the API is limited to 25 requests per day
+- Also, you are allowed to make a single request every 5 minutes. 
 
 ### Analytics
 - User will get a summary of biggest movers on the market daily, month-on-month, year-on-year
