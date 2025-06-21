@@ -36,7 +36,22 @@ class InfraStack(Stack):
         )
 
         # Import existing Lambda function by name
-        lambda_fn = _lambda.Function.from_function_name(
-            self, "ImportedLambdaFunction",
-            function_name="AlphaVantageLambdaDataIngestion"
+        lambda_fn = _lambda.DockerImageFunction(
+            self, "AlphaVantageLambdaFunction",
+            function_name="AlphaVantageLambdaDataIngestion",
+            code=_lambda.DockerImageCode.from_ecr(repository),
+            role=lambda_role,memory_size=1024,  # in MB
+            timeout=Duration.minutes(15),
+            environment={
+                "SECRET_NAME": secret.secret_name,
+                "REGION": "eu-west-1"
+            }
+            )
+
+
+        rule = events.Rule(
+            self, "Every5MinRule",
+            schedule=events.Schedule.rate(Duration.minutes(30))
         )
+        rule.add_target(targets.LambdaFunction(lambda_fn))
+

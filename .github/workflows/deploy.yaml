@@ -5,9 +5,9 @@ name: Push Docker Image to ECR
 on:
   push:
     branches:
-      - "random_branch_turning_off_deployment"
+      - "main"
     paths:
-      - "infra/**" # trigger when infrastructure changes
+      #∂- "infra/**" # trigger when infrastructure changes
       - "lambdas_source_code/**"  # trigger when lambda source code changes
       - ".github/workflows/**" # trigger when this CI/CD workflow changes
 

@@ -88,29 +88,27 @@ def _load_fortune_500_tickers() -> list:
 
 def _get_ticker_to_process(tickers: list, aws_s3_client: boto3.client) -> str:
 
-    index_ = 0
-    max_index = len(tickers) - 1
-    data_available = True
-    while data_available:
-        symbol_ = tickers[index_]
+    for symbol_ in tickers:
+        print(f"checking data availability for {symbol_}")
         s3_path = _generate_s3_key(symbol_)
         data_available = _check_day_data_availability(s3_path, aws_s3_client)
-        index_ += 1
-        if index_ > max_index:
-            symbol_ = ''
+        
+        if not data_available:
             break
 
     return symbol_
 
 
 def alpha_vantage_data_accessor(event, context):
+
     secret_name = os.environ["SECRET_NAME"]
     region_name = os.environ["REGION"]
 
-    # Create a Secrets Manager client
+    print('retrieving secret from Secrets Manager')
     aws_serects_manager_client = boto3.client("secretsmanager", region_name=region_name)
     aws_s3_client = boto3.client("s3", region_name=region_name)
 
+    print('retrieving ticker symbol')
     fortune_500_tickers = _load_fortune_500_tickers() 
     symbol_ = _get_ticker_to_process(fortune_500_tickers, aws_s3_client)
 
@@ -123,4 +121,7 @@ def alpha_vantage_data_accessor(event, context):
         url_ = _get_url(symbol_, api_key_)
         df   = _send_query(url_)
         _upload_data_to_s3(df, STORAGE_BUCKET_NAME,_generate_s3_key(symbol_))
+
+if __name__ == "__main__":
+    alpha_vantage_data_accessor()
 

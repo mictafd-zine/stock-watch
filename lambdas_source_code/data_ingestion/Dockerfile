@@ -12,4 +12,4 @@ COPY lambdas_source_code/requirements.txt ${LAMBDA_TASK_ROOT}/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Command to specify the Lambda handler (file_name.function_name)
-CMD ["alpa_vantage_data_ingestion.alpha_vantage_data_accessor"]
+CMD ["alpha_vantage_data_ingestion.alpha_vantage_data_accessor"]
