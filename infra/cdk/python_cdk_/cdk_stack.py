@@ -16,15 +16,15 @@ class InfraStack(Stack):
 
         # Imported resources
         secret = secretsmanager.Secret.from_secret_name_v2(
-            self, "AlphaVantageSecret", secret_name="your-secret-name"
+            self, "AlphaVantageSecret", secret_name="AlphaVantageAPIKeyv1"
         )
 
         repository = ecr.Repository.from_repository_name(
-            self, "LambdaEcrRepo", repository_name="your-repo-name"
+            self, "LambdaEcrRepo", repository_name="stock-watch-repo"
         )
 
         bucket = s3.Bucket.from_bucket_name(
-            self, "DataStorageBucket", bucket_name="your-bucket-name"
+            self, "DataLandingBucket", bucket_name="alpha-vantage-data-storage"
         )
 
         # IAM Role
