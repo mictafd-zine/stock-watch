@@ -7,7 +7,7 @@ on:
     branches:
       - "fix-lambda-bug"
     paths:
-      - "infra/**" # trigger when infrastructure changes
+      #∂- "infra/**" # trigger when infrastructure changes
       - "lambdas_source_code/**"  # trigger when lambda source code changes
       - ".github/workflows/**" # trigger when this CI/CD workflow changes
 
