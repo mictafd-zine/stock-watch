@@ -40,3 +40,10 @@ class InfraStack(Stack):
             self, "ImportedLambdaFunction",
             function_name="AlphaVantageLambdaDataIngestion"
         )
+
+        rule = events.Rule(
+            self, "Every5MinRule",
+            schedule=events.Schedule.rate(Duration.minutes(5))
+        )
+        rule.add_target(targets.LambdaFunction(lambda_fn))
+

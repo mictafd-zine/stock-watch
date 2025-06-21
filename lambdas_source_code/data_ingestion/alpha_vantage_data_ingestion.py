@@ -104,13 +104,15 @@ def _get_ticker_to_process(tickers: list, aws_s3_client: boto3.client) -> str:
 
 
 def alpha_vantage_data_accessor(event, context):
+
     secret_name = os.environ["SECRET_NAME"]
     region_name = os.environ["REGION"]
 
-    # Create a Secrets Manager client
+    print('retrieving secret from Secrets Manager')
     aws_serects_manager_client = boto3.client("secretsmanager", region_name=region_name)
     aws_s3_client = boto3.client("s3", region_name=region_name)
 
+    print('retrieving ticker symbol')
     fortune_500_tickers = _load_fortune_500_tickers() 
     symbol_ = _get_ticker_to_process(fortune_500_tickers, aws_s3_client)
 
