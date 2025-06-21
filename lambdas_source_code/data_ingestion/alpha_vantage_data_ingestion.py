@@ -92,9 +92,9 @@ def _get_ticker_to_process(tickers: list, aws_s3_client: boto3.client) -> str:
         print(f"checking data availability for {symbol_}")
         s3_path = _generate_s3_key(symbol_)
         data_available = _check_day_data_availability(s3_path, aws_s3_client)
+        
         if not data_available:
             break
-
 
     return symbol_
 
